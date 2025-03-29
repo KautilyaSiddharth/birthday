@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sonakshi Di! 🎉</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            position: relative;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #yes:hover {
+            background-color: #45a049;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Sonakshi Di, do you love me? ❤️</h1>
+    <div class="buttons">
+        <button id="yes" onclick="rickroll()">Yes</button>
+        <button id="no" onclick="handleNoClick()">No</button>
+    </div>
+    
+    <script>
+        let noClickCount = 0;
+        
+        function rickroll() {
+            document.getElementById("question").innerText = "Guess what... I don’t 😈 Happy Birthday though! 🎉";
+            
+            // Confetti animation
+            const confetti = document.createElement("div");
+            confetti.innerHTML = "🎉🎊";
+            confetti.style.fontSize = "5rem";
+            confetti.style.position = "absolute";
+            confetti.style.top = "50%";
+            confetti.style.left = "50%";
+            confetti.style.transform = "translate(-50%, -50%)";
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            }, 2500);
+        }
+        
+        function handleNoClick() {
+            noClickCount++;
+            let question = document.getElementById("question");
+            let noButton = document.getElementById("no");
+            document.body.classList.add("shake");
+            setTimeout(() => document.body.classList.remove("shake"), 300);
+            
+            if (noClickCount === 1) {
+                question.innerText = "Are you sure, Sonakshi Di? 🤨";
+                noButton.innerText = "Yes, I'm sure!";
+            } else if (noClickCount === 2) {
+                question.innerText = "Think again... 🤔";
+                noButton.innerText = "Please let me go!";
+            } else {
+                noButton.style.display = "none";
+                question.innerText = "Guess you have no choice! 😆";
+            }
+        }
+        
+        setTimeout(() => document.getElementById("yes").classList.add("grow"), 5000);
+    </script>
+</body>
+</html>
